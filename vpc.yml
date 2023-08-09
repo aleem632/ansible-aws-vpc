@@ -170,7 +170,7 @@
 
     - name: Copying the all the variables into file
       copy:
-        content: "vpcid: {{vpc_info_out.vpc.id}}\nPubsub1id: {{publicsub1_out.subnet.id}}\nPubsub2id: {{publicsub2_out.subnet.id}}\nPubsub3id: {{publicsub3_out.subnet.id}}\nPrisub1id: {{privatesub1_out.subnet.id}}\nPrisub2id: {{privatesub2_out.subnet.id}}\nPrisub3id: {{privatesub3_out.subnet.id}}\nIGWid: {{IGW_out.gateway_id}}\nPubRTid: {{publicRoute_out.route_table.id}}\n NATid: {{NatGW_out.nat_gateway_id}}\nPriRTid: {{PrivateRT_out.route_table.id}}"
+        content: "vpcid: {{vpc_info_out.vpc.id}}\nPubsub1id: {{publicsub1_out.subnet.id}}\nPubsub2id: {{publicsub2_out.subnet.id}}\nPubsub3id: {{publicsub3_out.subnet.id}}\nPrisub1id: {{privatesub1_out.subnet.id}}\nPrisub2id: {{privatesub2_out.subnet.id}}\nPrisub3id: {{privatesub3_out.subnet.id}}\nIGWid: {{IGW_out.gateway_id}}\nPubRTid: {{publicRoute_out.route_table.id}}\nNATid: {{NatGW_out.nat_gateway_id}}\nPriRTid: {{PrivateRT_out.route_table.id}}"
         dest: output_vars
     
     
