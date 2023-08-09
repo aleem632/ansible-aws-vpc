@@ -118,7 +118,7 @@
       ec2_vpc_nat_gateway:
         state: "{{state}}"
         region: "{{region}}"
-        subnet_id: "{{publicsub1_out.subet.id}}"
+        subnet_id: "{{publicsub1_out.subnet.id}}"
         wait: yes
         if_exist_do_not_create: true 
       register: NatGW_out 
