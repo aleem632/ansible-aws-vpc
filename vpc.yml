@@ -114,5 +114,29 @@
             gateway_id: "{{IGW_out.gateway_id}}"
       register: publicRoute_out  
 
+    - name: Creating NAT Gateway for Private Subnets
+      ec2_vpc_nat_gateway:
+        state: "{{state}}"
+        region: "{{region}}"
+        subnet_id: "{{publicsub1_out.subet.id}}"
+        wait: yes
+        if_exist_do_not_create: yes
+      register: NatGW_out 
+
+    - name: Creating Route table for Private subnet
+      ec2_vpc_route_table:
+        vpc_id: "{{vpc_info_out.vpc.id}}"
+        region: "{{region}}"
+        tags:
+          Name: Private-RouteTable-Vprofile
+        subnets:
+          - "{{privatesub1_out.subnet.id}}"
+          - "{{privatesub2_out.subnet.id}}"
+          - "{{privatesub3_out.subnet.id}}"
+        routes:
+          - dest: 0.0.0.0/0
+            gateway_id: "{{NatGW_out.nat_gateway_id}}"
+      register: PrivateRT_out
+
     
     
