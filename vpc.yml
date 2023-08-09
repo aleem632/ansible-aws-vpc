@@ -154,7 +154,7 @@
         - PrivateRT_out.route_table.id
 
     - name: we will setting up new variables by using this module 
-      set_facts:
+      set_fact:
         vpcid: "{{vpc_info_out.vpc.id}}"
         Pubsub1id: "{{publicsub1_out.subnet.id}}"
         Pubsub2id: "{{publicsub2_out.subnet.id}}"
