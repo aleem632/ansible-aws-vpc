@@ -138,5 +138,20 @@
             gateway_id: "{{NatGW_out.nat_gateway_id}}"
       register: PrivateRT_out
 
+    - debug:
+        var: "{{item}}"
+      loop:
+        - vpc_info_out.vpc.id
+        - publicsub1_out.subnet.id
+        - publicsub2_out.subnet.id
+        - publicsub3_out.subnet.id
+        - privatesub1_out.subnet.id
+        - privatesub2_out.subnet.id
+        - privatesub3_out.subnet.id
+        - IGW_out.gateway_id
+        - publicRoute_out.route_table.id
+        - NatGW_out.nat_gateway_id
+        - PrivateRT_out.route_table.id
+
     
     
