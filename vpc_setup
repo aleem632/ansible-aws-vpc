@@ -1,0 +1,28 @@
+# VPC name 
+
+vpc_name: "vprofile-vpc"
+
+# range of vpc 
+
+vpccidr: "172.20.0.0/16"
+
+# vpc subnets
+
+Publicsub1: 172.20.1.0/24
+Publicsub2: 172.20.2.0/24
+Publicsub3: 172.20.3.0/24
+Privatecsub1: 172.20.4.0/24
+Privatecsub2: 172.20.5.0/24
+Privatecsub3: 172.20.6.0/24
+
+# region 
+
+region: us-east-2
+
+# zone names
+
+zone1: us-east-2a
+zone2: us-east-2b
+zone3: us-east-2c
+
+state: present 
