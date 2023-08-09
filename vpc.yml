@@ -12,7 +12,7 @@
         region: "{{region}}"
         dns_support: yes
         dns_hostnames: yes
-        tenancy: dafault 
+        tenancy: default 
         state: "{{state}}"
       register: vpc_info_out
 
