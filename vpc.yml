@@ -120,7 +120,7 @@
         region: "{{region}}"
         subnet_id: "{{publicsub1_out.subet.id}}"
         wait: yes
-        if_exist_do_not_create: yes
+        if_exist_do_not_create: true 
       register: NatGW_out 
 
     - name: Creating Route table for Private subnet
