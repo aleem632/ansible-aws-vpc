@@ -153,5 +153,24 @@
         - NatGW_out.nat_gateway_id
         - PrivateRT_out.route_table.id
 
+    - name: we will setting up new variables by using this module 
+      set_facts:
+        vpcid: "{{vpc_info_out.vpc.id}}"
+        Pubsub1id: "{{publicsub1_out.subnet.id}}"
+        Pubsub2id: "{{publicsub2_out.subnet.id}}"
+        Pubsub3id: "{{publicsub3_out.subnet.id}}"
+        Prisub1id: "{{privatesub1_out.subnet.id}}"
+        Prisub2id: "{{privatesub2_out.subnet.id}}"
+        Prisub3id: "{{privatesub3_out.subnet.id}}"
+        IGWid: "{{IGW_out.gateway_id}}"
+        PubRTid: "{{publicRoute_out.route_table.id}}"
+        NATid: "{{NatGW_out.nat_gateway_id}}"
+        PriRTid: "{{PrivateRT_out.route_table.id}}"
+        cacheable: yes
+
+    - name: Copying the all the variables into file
+      copy:
+        content: "vpcid: {{vpc_info_out.vpc.id}}\nPubsub1id: {{publicsub1_out.subnet.id}}\nPubsub2id: {{publicsub2_out.subnet.id}}\nPubsub3id: {{publicsub3_out.subnet.id}}\nPrisub1id: {{privatesub1_out.subnet.id}}\nPrisub2id: {{privatesub2_out.subnet.id}}\nPrisub3id: {{privatesub3_out.subnet.id}}\nIGWid: {{IGW_out.gateway_id}}\nPubRTid: {{publicRoute_out.route_table.id}}\n NATid: {{NatGW_out.nat_gateway_id}}\nPriRTid: {{PrivateRT_out.route_table.id}}"
+        dest: output_vars
     
     
