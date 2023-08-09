@@ -88,7 +88,28 @@
         az: "{{zone3}}"
         resource_tags:
           Name: privatesub3
-      register: privatesub3_out   
+      register: privatesub3_out 
+
+    - name: Creating Internet Gateway for VPC
+      ec2_vpc_igw:
+        vpc_id: "{{vpc_info_out.vpc.id}}"
+        region: "{{region}}"
+        state: "{{state}}"
+        resource_tags:
+          Name: vprofile_IGW
+      register: IGW_out
+
+    - name: Creating Route table for public subnets
+      ec2_vpc_route_table:
+        vpc_id: "{{vpc_info_out.vpc.id}}"
+        region: "{{region}}"
+        tags:
+          Name: Public-RouteTable-Vprofile
+        subnets:
+          - "{{publicsub1_out.subnet.id}}"
+          - "{{publicsub2_out.subnet.id}}"
+          - "{{publicsub3_out.subnet.id}}"
+      register: publicRoute_out  
 
     
     
