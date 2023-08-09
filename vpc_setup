@@ -11,9 +11,9 @@ vpccidr: "172.20.0.0/16"
 Publicsub1: 172.20.1.0/24
 Publicsub2: 172.20.2.0/24
 Publicsub3: 172.20.3.0/24
-Privatecsub1: 172.20.4.0/24
-Privatecsub2: 172.20.5.0/24
-Privatecsub3: 172.20.6.0/24
+Privatesub1: 172.20.4.0/24
+Privatesub2: 172.20.5.0/24
+Privatesub3: 172.20.6.0/24
 
 # region 
 
