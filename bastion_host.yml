@@ -51,7 +51,7 @@
           Name: Bastion_host
           Project: infra
           Owner: Devops
-        group_id: "{{bastionSG_out.group_id}}"
+        security_group: "{{bastionSG}}"
       register: bastion_host_out
           
           
