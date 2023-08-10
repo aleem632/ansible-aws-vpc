@@ -52,6 +52,7 @@
           Project: infra
           Owner: Devops
         group_id: "{{bastionSG_out.group_id}}"
+        vpc_subnet_id: "{{Pubsub1id}}"
       register: bastion_host_out
           
           
