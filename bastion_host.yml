@@ -6,7 +6,7 @@
       include_vars: bastion_setup
 
     - name: including output variable file
-      include_vars: output_vars
+      include_vars: variable_file
 
     - name: creating key for bastion host
       ec2_key:
