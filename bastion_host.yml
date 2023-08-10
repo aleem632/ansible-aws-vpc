@@ -16,7 +16,7 @@
 
     - name: copying private key content in file 
       copy:
-        content: "{{keyout.key.private_key}}"
+        content: "{{key_out.key.private_key}}"
         dest: bastion_key.pem
         mode: 0600
       when: key_out.changed
@@ -48,7 +48,7 @@
           Owner: Devops 
         exact_count: 1
         count_tag:
-           Name: Bastion_host
+          Name: Bastion_host
           Project: infra
           Owner: Devops
         group_id: "{{bastionSG_out.group_id}}"
