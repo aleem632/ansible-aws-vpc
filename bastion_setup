@@ -1,5 +1,0 @@
-# bastion host
-
-bastion_ami: ami-098dd3a86ea110896
-region: us-east-2
-MYIP: 
