@@ -1,2 +1,4 @@
 output_vars
 variable_file
+*.pem
+
