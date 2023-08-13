@@ -3,10 +3,10 @@
   gather_facts: False 
   tasks:
     - name: including variable file
-      include_vars: bastion_setup
+      include_vars: vpc_setup
 
     - name: including output variable file
-      include_vars: variable_file
+      include_vars: output_vars
 
     - name: creating key for bastion host
       ec2_key:
