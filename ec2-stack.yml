@@ -49,11 +49,12 @@
             from_port: 80
             to_port: 80
             group_id: "{{ELBSG_out.group_id}}"
+
           - proto: tcp
             from_port: 22
             to_port: 22
             group_id: "{{bastionSGid}}"
-        register: webstackSG_out
+      register: webstackSG_out
 
     - name: Adding another rule of internal traffic by webstack 
       ec2_group:
