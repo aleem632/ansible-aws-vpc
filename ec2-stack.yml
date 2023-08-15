@@ -18,7 +18,7 @@
 
     - name: copying the content of private key
       copy:
-        content: "{{keyout.key.private_key}}"
+        content: "{{key_out.key.private_key}}"
         dest: stack-key.pem
         mode: 0600
       when: key_out.changed
