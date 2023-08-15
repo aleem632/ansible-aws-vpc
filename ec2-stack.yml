@@ -22,3 +22,48 @@
         dest: stack-key.pem
         mode: 0600
       when: key_out.changed
+
+    - name: Creating a Security group for load balancer
+      ec2_group:
+        name: ELB-SG
+        description: allowing port 80 from anywhere for ELB
+        vpc_id: "{{vpcid}}"
+        region: "{{region}}"
+        purge_rules: no 
+        rules:
+          - proto: tcp
+            from_port: 80
+            to_port: 80
+            cidr_ip: 0.0.0.0/0
+      register: ELBSG_out
+
+    - name: Creating SG for EC2 instance web app stack
+      ec2_group:
+        name: webstackSG
+        description: allowing traffic from load balance SG and bastion host SG
+        vpc_id: "{{vpcid}}"
+        region: "{{region}}"
+        purge_rules: no
+        rules:
+          - proto: tcp
+            from_port: 80
+            to_port: 80
+            group_id: "{{ELBSG_out.group_id}}"
+
+          - proto: tcp
+            from_port: 22
+            to_port: 22
+            cidr_ip: 0.0.0.0/0
+        register: webstackSG_out
+
+    - name: Adding another rule of internal traffic by webstack 
+      ec2_group:
+        name: webstackSG
+        description: allowing traffic from load balance SG and bastion host SG
+        vpc_id: "{{vpcid}}"
+        region: "{{region}}"
+        purge_rules: no
+        rules:
+          - proto: all
+            group_id: "{{webstackSG_out.group_id}}"
+
