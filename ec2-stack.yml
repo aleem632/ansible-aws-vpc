@@ -10,6 +10,9 @@
     - name: import vpc variable file
       include_vars: Images
 
+    - name: import vpc variable file
+      include_vars: vpc_setup
+
     - name: Creating an ec2 key for instance 
       ec2_key:
         name: stack-key
