@@ -186,9 +186,9 @@
         purge_instance_ids: true
         security_group_ids: "{{webstackSG_out.group_id}}"
         subnets:
-          - "{{Publicsub1}}"
-          - "{{Publicsub2}}"
-          - "{{Publicsub1}}"
+          - "{{ Publicsub1 }}"
+          - "{{ Publicsub2 }}"
+          - "{{ Publicsub3 }}"
         listeners:
           - protocol: http
             load_balancer_port: 80
