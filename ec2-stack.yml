@@ -172,3 +172,21 @@
         vpc_subnet_id: "{{Prisub1id}}"
       register: db01_out
 
+
+    - name: creating a load balancer for my web instance 
+      ec2_elb_lb:
+        name: Web-loadbalancer
+        region: "{{region}}"
+        state: present 
+        instance_ids:
+          - "{{web01_out.tagged_instances[0].id}}"
+        purge_instance_ids: true
+        security_group_ids: "{{webstackSG_out.group_id}}"
+        subnets:
+          - "{{Publicsub1}}"
+          - "{{Publicsub2}}"
+          - "{{Publicsub1}}"
+        listeners:
+          - protocol: http
+            load_balancer_port: 80
+            instance_port: 80
