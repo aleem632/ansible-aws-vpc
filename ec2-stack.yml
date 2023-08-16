@@ -85,7 +85,7 @@
           Project: infra
           Owner: Devops
         group_id: "{{webstackSG_out.group_id}}"
-        vpc_subnet_id: "{{Prisub1id}"
+        vpc_subnet_id: "{{Prisub1id}}"
       register: web01_out
 
     - name: Creating tomcat server
