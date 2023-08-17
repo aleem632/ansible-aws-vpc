@@ -203,13 +203,13 @@
     - name: creating file in provision-dir
       file:
         path: /provision-dir/hostip
-        state: file
+        state: touch
         mode: 0600
 
     - name: creating file in provision-dir
       file:
         path: /provision-dir/inventory-file
-        state: file
+        state: touch
         mode: 0600
 
     - name: saving the private ips of our instances in hostip file
