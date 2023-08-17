@@ -202,15 +202,15 @@
 
     - name: creating file in provision-dir
       file:
-      path: /provision-dir/hostip
-      state: file
-      mode: 0600
+        path: /provision-dir/hostip
+        state: file
+        mode: 0600
 
     - name: creating file in provision-dir
       file:
-      path: /provision-dir/inventory-file
-      state: file
-      mode: 0600
+        path: /provision-dir/inventory-file
+        state: file
+        mode: 0600
 
     - name: saving the private ips of our instances in hostip file
       blockinfile:
@@ -224,7 +224,7 @@
 
     - name: creating an inventroy file for our next process
       blockinfile:
-        path: inventory-file
+        path: /provision-dir/inventory-file
         block: |
           web01 ansible_host={{web01_out.tagged_instances[0].private_ip}}
           app01 ansible_host={{app01_out.tagged_instances[0].private_ip}}
