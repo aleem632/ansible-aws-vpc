@@ -1,12 +1,9 @@
-================== INTRODUCTION ==================
+# This project is about Ansible 
 
-This Project is based on an Automation tool called Ansible, by using this tool we will be creating entire stack of Web Application
+# ================== INTRODUCTION ==================
 
-and VPC in AWS, including subnets, internet gateway, route tables etc, whole process will be automatic through Ansible
-
-Ansible playbooks will be run on EC2 server which will have role attach to it and python boto3 will be used for AWS API calls
-
-==================SCENARIO====================
+This Project is based on an Automation tool called Ansible, by using this tool we will be creating entire stack of Web Application and VPC in AWS, including subnets, internet gateway, route tables etc, whole process will be automatic through Ansible Ansible playbooks will be run on EC2 server which will have role attach to it and python boto3 will be used for AWS API calls
+# ==================SCENARIO====================
 
 Before any project management team need to build & setup up an infrastructure on the cloud which requires
 
@@ -14,11 +11,9 @@ Before any project management team need to build & setup up an infrastructure on
 
  and regular requests
 
-================== PROBLEMS ======================
+# ================== PROBLEMS ======================
 
-Creation of VPC involves many steps and has many moving parts such as creating an internet gateway and attaching to it VPC, having 
-
-bastion host, attaching EIP to ENI etc 
+Creation of VPC involves many steps and has many moving parts such as creating an internet gateway and attaching to it VPC, having bastion host, attaching EIP to ENI etc 
 
 Human error can lead to non functional or expose VPC while creating all these components manually 
 
@@ -26,7 +21,7 @@ Creating VPC with all the required parts is a time consuming task
 
 Complete infrastructure setup is complex and not repeatable with regular changing 
 
-================== SOLUTIONS ======================
+# ================== SOLUTIONS ======================
 
 Configuration management of VPC with no human error with automatic setup so misconfiguration will happen 
 
@@ -34,20 +29,18 @@ In need to any change we will have centralize management system
 
 We will be using IAAC infrastructure as a code which gives the version control access less time consuming 
 
-================== Architectural Design ==========
+# ================== Architectural Design ==========
 ![Alt Text](https://github.com/aleem632/ansible-aws-vpc/blob/36bde73a996a74398ebbe39b48aea8786e59f14a/architectural-design/ansible-vpc-creation.png)
 
 
 
-================== Flow Of Execution ============
+# ================== Flow Of Execution ============
 
 1: Login to AWS console and choose IAM, Create a role for EC2 instance which will have Full adminstrator access but we can
 
- choose role according to project requirements, give the name to role and create it 
+choose role according to project requirements, give the name to role and create it 
 
-Create EC2 instance, choose Ubuntu 2004 focal, select keypair, default vpc, create SG if not created
- 
-attach the role to IAM instance profile 
+Create EC2 instance, choose Ubuntu 2004 focal, select keypair, default vpc, create SG if not created attach the role to IAM instance profile 
 
 USER DATA "#!/bin/bash"
 
@@ -76,9 +69,9 @@ After subnet and vpc creation we will create internet gate and route table with 
 
 create an entry of 0000/0 to IGW 
 
-Next step will be to create a NAT gateway for private subnets and route table and create a entry for 0000/0
+Next step will be to create a NAT gateway for private subnets and route table and create a entry for 0.0.0.0/0
 
- to NAT gateway so it can access internet but the creation of nat gateway will be in public subnet 
+to NAT gateway so it can access internet but the creation of nat gateway will be in public subnet 
 
 Debug module print all the variables and we will use set_fact module to set their value to new variables
 
@@ -86,15 +79,16 @@ then copy module will be used to copy all the variable and save into output_vars
 
 4: Bastion playbook will have include_var module and we will have two variable files 
 
-we will create key and add private key content in bastion_keypem file , Security group for bastion host with inbound traffic 
-
-of port:22 MYIP 
+we will create key and add private key content in bastion_keypem file , Security group for bastion host with inbound traffic of port:22 MYIP 
 
 Bastion host will be created using the key and security group created earlier and subnetnetid 
 
-========================== Second Phase ==========================================
+# ============== Second Phase ===================
+![Alt Text](https://github.com/aleem632/ansible-aws-vpc/blob/a883d6fa723a0785a79896141eb494a0bf652fc6/architectural-design/ansible-second-phase.jpg)
 
-Architectural Design 
+
+# Architectural Design
+
 5: After the successful execution of VPC with public & private subnet and bastion host 
 
 lets create another branch for next phase with same code 'git checkout -b javaapp'
