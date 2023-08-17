@@ -194,24 +194,6 @@
             load_balancer_port: 80
             instance_port: 80
 
-    - name: creating hostip file for saving private ips in file
-      file:
-        name: provision-dir
-        state: directory 
-        mode: 0777
-
-    - name: creating file in provision-dir
-      file:
-        path: /provision-dir/hostip
-        state: touch
-        mode: 0600
-
-    - name: creating file in provision-dir
-      file:
-        path: /provision-dir/inventory-file
-        state: touch
-        mode: 0600
-
     - name: saving the private ips of our instances in hostip file
       blockinfile:
         path: /provision-dir/hostip
