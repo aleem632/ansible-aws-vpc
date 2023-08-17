@@ -1,9 +1,8 @@
-# This project is about Ansible 
-
-# ================== INTRODUCTION ==================
+ 
+### ================== INTRODUCTION ==================
 
 This Project is based on an Automation tool called Ansible, by using this tool we will be creating entire stack of Web Application and VPC in AWS, including subnets, internet gateway, route tables etc, whole process will be automatic through Ansible Ansible playbooks will be run on EC2 server which will have role attach to it and python boto3 will be used for AWS API calls
-# ==================SCENARIO====================
+### ==================SCENARIO====================
 
 Before any project management team need to build & setup up an infrastructure on the cloud which requires
 
@@ -11,7 +10,7 @@ Before any project management team need to build & setup up an infrastructure on
 
  and regular requests
 
-# ================== PROBLEMS ======================
+### ================== PROBLEMS ======================
 
 Creation of VPC involves many steps and has many moving parts such as creating an internet gateway and attaching to it VPC, having bastion host, attaching EIP to ENI etc 
 
@@ -21,7 +20,7 @@ Creating VPC with all the required parts is a time consuming task
 
 Complete infrastructure setup is complex and not repeatable with regular changing 
 
-# ================== SOLUTIONS ======================
+### ================== SOLUTIONS ======================
 
 Configuration management of VPC with no human error with automatic setup so misconfiguration will happen 
 
@@ -29,12 +28,12 @@ In need to any change we will have centralize management system
 
 We will be using IAAC infrastructure as a code which gives the version control access less time consuming 
 
-# ================== Architectural Design ==========
+### ================== Architectural Design ==========
 ![Alt Text](https://github.com/aleem632/ansible-aws-vpc/blob/36bde73a996a74398ebbe39b48aea8786e59f14a/architectural-design/ansible-vpc-creation.png)
 
 
 
-# ================== Flow Of Execution ============
+### ================== Flow Of Execution ============
 
 1: Login to AWS console and choose IAM, Create a role for EC2 instance which will have Full adminstrator access but we can
 
