@@ -1,0 +1,15 @@
+- name: creating a host ip file in every server
+  hosts: all 
+  tasks:
+    - name: Including the hostip variable file
+      include_vars: group_vars/hostip
+
+    - name: setting up /etc/hosts file to server
+      blockinfile:
+        path: /etc/hosts
+        block: |
+          {{web01_ip}} web01
+          {{app01_ip}} app01
+          {{rmq01_ip}} rmq01
+          {{mc01_ip}}  mc01
+          {{db01_ip}}  db01
