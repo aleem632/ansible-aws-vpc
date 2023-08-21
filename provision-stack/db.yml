@@ -1,3 +1,4 @@
+---
 - name: Installing the mysql server 
   hosts: dbservergroup
   gather_facts: no 
@@ -51,7 +52,7 @@
         - conf
 
   handlers:
-      name: Restart mysql 
+    - name: Restart mysql 
       service:
         name: mysql 
         state: restarted  
