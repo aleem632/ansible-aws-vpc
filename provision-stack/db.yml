@@ -50,7 +50,7 @@
       tags:
         - conf
 
-    handlers:
+  handlers:
       name: Restart mysql 
       service:
         name: mysql 
