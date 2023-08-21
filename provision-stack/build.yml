@@ -1,0 +1,40 @@
+- name: Generating the artifacts locally 
+  hosts: localhost
+  connection: local
+  become: yes
+  tasks:
+    - name: installing required packages for building artifacts
+      apt:
+        name: "{{item}}"
+        state: present
+        update_cache: yes
+      loop:
+        - git 
+        - openjdk-8-jdk
+        - maven
+      
+    - name: cloning the source code from GIT
+      git:
+        repo: "https://github.com/devopshydclub/vprofile-project.git"
+        dest: ./Javaapp-repo
+        version: vp-rem
+      register: git_status 
+    
+    - name: Building Artifacts using mvn command 
+      command: "mvn install"
+      args:
+        chdir: Javaapp-repo
+      when: git_status.changed
+      register: mvn_info 
+
+    - name: Copying the artifacts into files directory
+      copy:
+        src: "{{ item }}"
+        dest: files/ROOT.war
+      with_fileglob: Javaapp-repo/target/*.war
+
+    - name: Copying the backup file for mysql 
+      copy:
+        src: Javaapp-repo/src/main/resources/db_backup.sql
+        dest: files/db_backup.sql    
+        
