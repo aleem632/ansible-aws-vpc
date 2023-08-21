@@ -15,7 +15,7 @@
       
     - name: cloning the source code from GIT
       git:
-        repo: "https://github.com/devopshydclub/vprofile-project.git"
+        repo: "https://github.com/aleem632/ansible-aws-vpc.git"
         dest: ./Javaapp-repo
         version: vp-rem
       register: git_status 
