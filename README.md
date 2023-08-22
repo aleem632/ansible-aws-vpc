@@ -1,4 +1,4 @@
- 
+### *CREATION OF FULL WEB STACK JAVA WEB APP AND VPC USING ANSIBLE*
 #### INTRODUCTION 
 
 This Project is based on an Automation tool called Ansible, by using this tool we will be creating entire stack of Web Application and VPC in AWS, including subnets, internet gateway, route tables etc, whole process will be automatic through Ansible Ansible playbooks will be run on EC2 server which will have role attach to it and python boto3 will be used for AWS API calls
@@ -113,7 +113,39 @@ Create Security group for load balancer which will allow traffic at port:80
 
 Second Security group is for webstack which will have inbound traffic rule port:80 and Port:22 
 
-From Bastion host SG and third rule: all traffic from its own SG group 
+From Bastion host SG and third rule: all traffic from its own SG group
+
+After the creation of Security Groups, Whole web stack will be created by using the EC2 module 
+
+and in instance tags parameter we will be using these option in order to get same result everytime 
+
+we run this playbook
+
+<pre>
+instance_tags:
+  Name: web01
+  project: infrastructure
+  owner: Devops
+exact_count: 1
+count_tag:
+  Name: web01
+  project: infrastructure
+  owner: Devops
+</pre>
+
+ami's for tomcat nginx, memcached, rabbitmq and mysql will be given in Images files which later can be used in ec2-stack playbook 
+
+Next step will be to create Load balancer with the listener rule
+
+<pre>
+protocol: http
+load_balancer_port: 80
+instance_port: 80
+</pre>
+
+7. Private ip's for all server will be saved in hostip file which can be used for /etc/hosts and Inventory file will be created for ansible hosts by using this "blockinfile" module
+ 
+
 
 
 
